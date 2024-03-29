@@ -880,11 +880,11 @@ function getShipList(LIVE_Token, callback)
 			
 			ship_matrix.push({
 				'id': 1003,
-				'name': 'Greycat',
+				'name': 'PTV',
 				'production_status': 'flight-ready',
 				'type': 'transport',
 				'focus': '',
-				'url': '/pledge/Standalone-Ships/Greycat-PTV-Buggy',
+				'url': '/pledge/Standalone-Ships/PTV-Buggy',
 				'media': {
 					0: {
 						'images':{
@@ -893,7 +893,7 @@ function getShipList(LIVE_Token, callback)
 					}
 				},
 				'manufacturer':{
-					'id': 1000,
+					'id': 17,
 					'name': 'Greycat Industrial',
 					'code': 'GRIN',
 				},
@@ -907,7 +907,7 @@ function getShipList(LIVE_Token, callback)
 					ship.owned = false;
 					ship.nb = 0;
 					ship.loaner = false;
-					
+					ship.name = ship.name.trim();	
 					ship_matrix_id[ship.id] = ship;
 					
 					if (!Manufacturers.find(x => x.id == ship.manufacturer.id)) Manufacturers.push({name: ship.manufacturer.name, code: ship.manufacturer.code});
