@@ -2311,15 +2311,18 @@ function getServiceStatus (callback)
 	*/
 	
 	$.ajax({
+		async: true,
 		type: "get",
-		url: "https://status.robertsspaceindustries.com/static/content/api/v0/systems.en.json",
-		success: (result) => {			
-			callback(result);
+		contentType: 'application/json',
+		url: "https://status.robertsspaceindustries.com/index.json",
+		success: (result) => {
+			var status_result = result.systems;
+			if (typeof local_storage.report == "undefined") local_storage.report = {};
+			callback(status_result);
 		},
 		error: (request, status, error) => {
 			callback({success: 0, code: "KO", msg: request.responseText, data: {}});
 		},
-		contentType: 'application/json',
 	});
 }
 
